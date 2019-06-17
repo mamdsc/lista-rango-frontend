@@ -14,11 +14,15 @@ body,
   height: 100%;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  color: #333;
-}
+ header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  background: #40E0D0;
+  height: 40px;
+ }
 `;
 
 export { AppStyled };

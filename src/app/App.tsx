@@ -7,6 +7,7 @@ class App extends React.Component<RouteComponentProps<{}>> {
    public render(): JSX.Element {
       return (
          <AppStyled>
+            <header/>
             <Root/>
          </AppStyled>
       );
