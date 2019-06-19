@@ -1,10 +1,10 @@
-import { Sales } from "./Sales";
+import { ISales } from "./Sales";
 
-export interface Menu {
+export interface IMenu {
    restaurantId: number;
    group: string;
    image: string;
    name: string;
    price: number;
-   sales: Sales[]; 
+   sales: ISales[]; 
 }

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { Menu } from '../../../meta-data/interfaces/Menu';
+import { IMenu } from '../../../meta-data/interfaces/Menu';
 import { MenuRestauranteStyled } from './menu-restaurante.styled';
 
 interface IMenuRestauranteProps {
-   menu: Menu[];
+   menu: IMenu[];
 }
 
 const MenuRestaurante: React.StatelessComponent<IMenuRestauranteProps> = props => {
       return (
             <MenuRestauranteStyled>
-            <div className="flex-container">
+            <div className="container row-wrap">
                {props.menu.map((item, index) => (
                   <div id='itens' key={index}>
                      <img src={item.image} alt={item.name}/>

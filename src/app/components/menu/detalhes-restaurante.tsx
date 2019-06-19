@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Restaurante } from '../../../meta-data/interfaces/Restaurante';
+import { IRestaurante } from '../../../meta-data/interfaces/Restaurante';
 import { DetalhesRestauranteStyled } from './detalhes-restaurante.styled';
-import { Hours } from '../../../meta-data/interfaces/Hours';
 
 interface IDetalhesRestauranteProps {
-   restaurante: Restaurante[];
+   restaurante: IRestaurante;
 }
 
 class DetalhesRestaurante extends React.Component<IDetalhesRestauranteProps> {
@@ -49,11 +48,9 @@ class DetalhesRestaurante extends React.Component<IDetalhesRestauranteProps> {
       
       console.log(this.props.restaurante);
 
-      hours = this.props.restaurante.map(x =>
-         x.hours && console.log('h', x.hours)
-      );
+      const { restaurante } = this.props;
          
-      hours.map((h: Hours) => 
+      restaurante.hours && restaurante.hours.map(h => 
          days = h.days
       );
 
@@ -86,12 +83,14 @@ class DetalhesRestaurante extends React.Component<IDetalhesRestauranteProps> {
    }
 
    public render(): JSX.Element {
+   
+   const { restaurante } = this.props;
+   
    return (
       <DetalhesRestauranteStyled>
-         {this.props.restaurante.map((info, index) => (
-            <div id='infos' key={index}>
-               <img src={info.image} alt={info.name}/>
-               <h1>{info.name}</h1>
+            <div id='infos'>
+               <img src={restaurante.image} alt={restaurante.name}/>
+               <h1>{restaurante.name}</h1>
                <p>{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}</p>
                <p>{this.testando}</p>
                <p>{this.testando1}</p>
@@ -105,7 +104,6 @@ class DetalhesRestaurante extends React.Component<IDetalhesRestauranteProps> {
                   ))
                ))} */}
             </div>
-         ))}
       </DetalhesRestauranteStyled>
    );
    }

@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { ListaRestaurantesStyled } from './lista-restaurantes.styled';
 import { Link } from 'react-router-dom';
-import { Restaurante } from '../../../meta-data/interfaces/Restaurante';
+import { IRestaurante } from '../../../meta-data/interfaces/Restaurante';
 
 interface IListaRestaurantesProps {
-   restaurantes: Restaurante[]
+   restaurantes: IRestaurante[]
 }
 
 const ListaRestaurantes: React.FunctionComponent<IListaRestaurantesProps> = props => {
    return (
-      <div style={{display: 'flex'}}>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
          {props.restaurantes.map(restaurante => (
          <ListaRestaurantesStyled key={restaurante.id} abertoAgora={restaurante.abertoAgora}>
-            <ul>
+            <div className="flex-container">
                <Link id='link' to={`/menu/${restaurante.id}`}>
-                  <li key={restaurante.id}>
+                  <div id='itens' key={restaurante.id}>
                      <div id='hours'>
                         {restaurante.abertoAgora ? 'Aberto agora' : 'Fechado'}
                      </div>
@@ -23,9 +23,9 @@ const ListaRestaurantes: React.FunctionComponent<IListaRestaurantesProps> = prop
                         <span id='name'>{restaurante.name}</span><br/>
                         <span id='address'>{restaurante.address}</span>
                      </div>
-                  </li>
+                  </div>
                </Link>
-            </ul>
+            </div>
          </ListaRestaurantesStyled>
          ))}
       </div>

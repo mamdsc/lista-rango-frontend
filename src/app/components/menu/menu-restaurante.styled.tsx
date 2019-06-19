@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-const MenuRestauranteStyled = styled.div`
-
+const MenuRestauranteStyled = styled.span`
 img {
    width: 115px;
    height: 115px;
@@ -13,6 +12,7 @@ img {
    border-radius: 4px;
    height: 115px;
    width: 386px;
+   margin: 10px;
 }
 
 #infos {
@@ -38,13 +38,30 @@ img {
 .flex-container {
    display: flex;
    flex-direction: row;
-   flex-wrap: wrap;
+   flex-flow: row wrap;
    justify-content: center;
  }
  
  .flex-container > div {
    margin: 10px;
  }
+
+ .row-wrap {
+	flex-flow: row wrap;
+}
+
+
+.container {
+	max-width: 900px;
+   margin: 0 auto;
+   justify-content: center;
+   display: flex;
+}
+
+.item {
+	flex: 1;
+	margin: 15px;
+}
 `; 
 
 export { MenuRestauranteStyled };

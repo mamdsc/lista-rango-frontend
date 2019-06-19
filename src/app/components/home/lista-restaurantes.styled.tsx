@@ -12,21 +12,17 @@ img {
    position: absolute;
 }
 
-li {
-   width: 400px;
-   height: 100px;
-   box-shadow: 0px 2px 4px #000000;
-   margin-bottom: 40px;
-   border-radius: 4px;
-}
-
-ul {
-   list-style: none;
-}
-
 #infos {
    padding: 30px;
    margin-left: 90px;
+}
+
+#itens {
+   box-shadow: 0px 2px 4px #000000;
+   border-radius: 4px;
+   height: 100px;
+   width: 367px;
+   margin-bottom: 14px;
 }
 
 #hours {
@@ -55,6 +51,18 @@ ul {
 #link {
    text-decoration: none;
    color: #404040;
+   margin: 10px;
+}
+
+.flex-container {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+ 
+.flex-container > div {
+   margin: 10px;
 }
 `; 
 

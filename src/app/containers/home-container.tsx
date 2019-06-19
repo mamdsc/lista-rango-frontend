@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { ApiRestaurantes } from '../../services/api-restaurantes';
-import { Restaurante } from '../../meta-data/interfaces/Restaurante';
+import { IRestaurante } from '../../meta-data/interfaces/Restaurante';
 import { BuscaRestaurantes } from '../components/home/busca-restaurantes';
-import { Hours } from '../../meta-data/interfaces/Hours';
+import { IHours } from '../../meta-data/interfaces/Hours';
 import styled from 'styled-components';
 import { LayoutStyled } from '../components/layout.styled';
 import { ListaRestaurantes } from '../components/home/lista-restaurantes';
+import { RestauranteService } from '../../services/restaurante-service';
 
 interface IHomeContainerState {
-   restaurantes: Restaurante[],
+   restaurantes: IRestaurante[],
    abertoAgora: boolean;
 }
 
 class HomeContainer extends React.Component<{}, IHomeContainerState> {
 
-   public listaDeRestaurantes: Restaurante[] = [];
+   public listaDeRestaurantes: IRestaurante[] = [];
 
    public constructor (props: {}) {
       super(props);
@@ -29,17 +29,23 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
    }
 
    public obtemRestaurantes = async () => {
-      const response = await ApiRestaurantes.get('/restaurants');
-      this.listaDeRestaurantes = response.data;
+      try {
+         const response = await RestauranteService.getRestaurantes();
+         console.log(response);
+         this.listaDeRestaurantes = response.data;
 
-      let a: Restaurante[] = response.data;
-      a.map((r: Restaurante) => {
-         const statusAgora = this.status(r.hours)
-         r.abertoAgora = statusAgora;
+         let a = response.data;
+         a.map(r => {
+            const statusAgora = this.status(r.hours)
+            return r.abertoAgora = statusAgora;
+         })
+
          this.setState({
             restaurantes: a
          })
-      })
+      } catch (err) {
+         throw Error(`Request error. ->> ${err}`);
+      }
    }
 
    public filtrarItens(nomeRestaurante: string) {
@@ -56,7 +62,7 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       
       const filtrados = this.filtrarItens(nomeRestaurante);
 
-      let restaurantesFiltrados: Restaurante[] = [];
+      let restaurantesFiltrados: IRestaurante[] = [];
       filtrados.map(t => 
          restaurantesFiltrados = this.listaDeRestaurantes.filter(restaurante => restaurante.name === t)
       );
@@ -81,7 +87,7 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
    }
 
    
-   public status = (hours?: Hours[]): boolean => {
+   public status = (hours?: IHours[]): boolean => {
       let agora = new Date();
       let horaAtual = agora.getTime();
       let hoje = agora.getDay();
@@ -94,9 +100,12 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
             h.days.map(d => {
                if (d === hoje) {
                   return aberto = true;
+               } else {
+                  return aberto = false;
                }
             });
-         }
+         } 
+         return aberto = false;
       });
       
       return aberto;

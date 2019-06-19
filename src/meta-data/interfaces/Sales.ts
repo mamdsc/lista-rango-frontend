@@ -1,7 +1,7 @@
-import { Hours } from "./Hours";
+import { IHours } from "./Hours";
 
-export interface Sales {
+export interface ISales {
    description: string;
-   hours: Hours;
+   hours: IHours;
    price: number;
 }

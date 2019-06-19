@@ -1,4 +1,4 @@
-export interface Hours {
+export interface IHours {
    from: string;
    to: string;
    days: number[];

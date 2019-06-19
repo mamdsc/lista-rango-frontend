@@ -1,10 +1,10 @@
-import { Hours } from "./Hours";
+import { IHours } from "./Hours";
 
-export interface Restaurante {
+export interface IRestaurante {
    id: number;
    name: string;
    address: string;
    image: string;
-   hours?: Hours[];
+   hours?: IHours[];
    abertoAgora: boolean;
 };
