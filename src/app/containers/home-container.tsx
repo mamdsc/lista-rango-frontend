@@ -93,36 +93,36 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       let horaAbetura = new Date();
       const numberHour = parseInt(from);
       horaAbetura.setHours(numberHour);
-      return horaAbetura.getTime();
+      return horaAbetura.getHours();
    }
    
    public horaFechado = (to: string) => {
       let horaFecha = new Date();
       const numberHour = parseInt(to);
       horaFecha.setHours(numberHour);
-      return horaFecha.getTime();
+      return horaFecha.getHours();
    }
 
    
    public status = (hours?: IHours[]): boolean => {
       let agora = new Date();
-      let horaAtual = agora.getTime();
+      let horaAtual = agora.getHours();
       let hoje = agora.getDay();
       
       if (!hours) return false;
-      
+
       let aberto: boolean = false;
       hours.map(h => {
-         if (this.horaAberto(h.from) < horaAtual && this.horaFechado(h.to) > horaAtual) {
+
+         if (this.horaAberto(h.from) >= horaAtual && this.horaFechado(h.to) >= horaAtual) {
             h.days.map(d => {
                if (d === hoje) {
                   return aberto = true;
-               } else {
-                  return aberto = false;
                }
+               return null
             });
-         } 
-         return aberto = false;
+         }
+         return null
       });
       
       return aberto;
