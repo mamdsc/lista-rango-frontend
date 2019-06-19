@@ -40,6 +40,7 @@ const ultimo = (days: number[]): string => {
 
 const DetalhesRestaurante: React.StatelessComponent<IDetalhesRestauranteProps> = props => {
    return (
+      <div>
       <DetalhesRestauranteStyled>
          <div id='detalhes'>
             <img src={props.restaurante.image} alt={props.restaurante.name}/>
@@ -56,6 +57,7 @@ const DetalhesRestaurante: React.StatelessComponent<IDetalhesRestauranteProps> =
             </div>
          </div>
       </DetalhesRestauranteStyled>
+      </div>
    );
 };
 

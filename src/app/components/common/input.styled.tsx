@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
-const BuscaRestaurantesStyled = styled.div`
+interface IInputStyledProps {
+   width?: string;
+   margin?: string;
+}
+
+const InputStyled = styled.div <IInputStyledProps>`
 text-align: center;
 
 input {
-   width: 700px;
+   width: ${props => props.width};
    height: 40px;
    border-radius: 20px;
    border: 1px solid #FFF;
@@ -12,8 +17,8 @@ input {
    text-indent: 30px;
    outline-style: none;
    font-size: 15px;
-   margin-bottom: 50px;
+   margin: ${props => props.margin};
 }
 `;
 
-export { BuscaRestaurantesStyled };
+export { InputStyled };

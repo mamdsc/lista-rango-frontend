@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { IRestaurante } from '../../meta-data/interfaces/Restaurante';
-import { BuscaRestaurantes } from '../components/home/busca-restaurantes';
 import { IHours } from '../../meta-data/interfaces/Hours';
 import styled from 'styled-components';
 import { LayoutStyled } from '../components/layout.styled';
 import { ListaRestaurantes } from '../components/home/lista-restaurantes';
 import { RestauranteService } from '../../services/restaurante-service';
+import { Input } from '../components/common/input';
+import { Loading } from '../components/common/loading';
 
 interface IHomeContainerState {
    restaurantes: IRestaurante[],
    abertoAgora: boolean;
+   isLoading: boolean;
 }
 
 class HomeContainer extends React.Component<{}, IHomeContainerState> {
@@ -20,7 +22,8 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       super(props);
       this.state = {
          restaurantes: [],
-         abertoAgora: false
+         abertoAgora: false,
+         isLoading: false
       };
    }
 
@@ -28,7 +31,14 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       this.obtemRestaurantes();
    }
 
+   public setLoading = (isLoading: boolean) => {
+      this.setState({
+         isLoading
+      });
+   }
+
    public obtemRestaurantes = async () => {
+      this.setLoading(true);
       try {
          const response = await RestauranteService.getRestaurantes();
          this.listaDeRestaurantes = response.data;
@@ -42,15 +52,18 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
          this.setState({
             restaurantes: a
          })
+
+         this.setLoading(false);
       } catch (err) {
+         this.setLoading(false);
          throw Error(`Request error. ->> ${err}`);
       }
    }
 
    public filtrarItens(nomeRestaurante: string) {
       const nomesRestaurantes = this.listaDeRestaurantes.map(r => r.name);
-      return nomesRestaurantes.filter(function(el) {
-            return el.toLowerCase().indexOf(nomeRestaurante.toLowerCase()) > -1;
+      return nomesRestaurantes.filter((i) => {
+         return i.toLowerCase().includes(nomeRestaurante.toLowerCase());
       })
    }
 
@@ -62,9 +75,14 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       const filtrados = this.filtrarItens(nomeRestaurante);
 
       let restaurantesFiltrados: IRestaurante[] = [];
-      filtrados.map(t => 
-         restaurantesFiltrados = this.listaDeRestaurantes.filter(restaurante => restaurante.name === t)
-      );
+
+      filtrados.map(item => 
+         this.listaDeRestaurantes.map(restaurante => {
+            if (restaurante.name === item) {
+               restaurantesFiltrados.push(restaurante)
+            } return restaurantesFiltrados
+         })
+      );      
 
       this.setState({
          restaurantes: restaurantesFiltrados
@@ -112,16 +130,19 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
 
    public render(): JSX.Element {
 
-      const { restaurantes } = this.state;
+      const { restaurantes, isLoading } = this.state;
 
       return (
          <LayoutStyled>
-            <HomeContainerStyled>
-               <header/>
-               <h1>Bem-vindo ao Lista Rango</h1>
-               <BuscaRestaurantes aplicarFiltro={this.aplicarFiltro}/>
-               <ListaRestaurantes restaurantes={restaurantes}/>
-            </HomeContainerStyled>
+            {isLoading ?
+               <Loading/> :
+               <HomeContainerStyled>
+                  <header/>
+                  <h1>Bem-vindo ao Lista Rango</h1>
+                  <Input aplicarFiltro={this.aplicarFiltro} placeholder={'Buscar estabelecimento'}/>
+                  <ListaRestaurantes restaurantes={restaurantes}/>
+               </HomeContainerStyled>
+            }
          </LayoutStyled>
       );
    }

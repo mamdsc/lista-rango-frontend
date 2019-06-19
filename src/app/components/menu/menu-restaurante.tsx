@@ -21,7 +21,7 @@ const MenuRestaurante: React.StatelessComponent<IMenuRestauranteProps> = props =
                            {'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'}
                         </span><br/>
                         <span id='price'>
-                           {item.price.toLocaleString('pt-br',
+                           {item.price && item.price.toLocaleString('pt-br',
                            {style: 'currency', currency: 'BRL'})}
                         </span>
                      </div>

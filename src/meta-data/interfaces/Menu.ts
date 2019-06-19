@@ -5,6 +5,6 @@ export interface IMenu {
    group: string;
    image: string;
    name: string;
-   price: number;
-   sales: ISales[]; 
+   price?: number;
+   sales?: ISales[]; 
 }
