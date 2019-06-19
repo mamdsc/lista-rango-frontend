@@ -31,7 +31,6 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
    public obtemRestaurantes = async () => {
       try {
          const response = await RestauranteService.getRestaurantes();
-         console.log(response);
          this.listaDeRestaurantes = response.data;
 
          let a = response.data;

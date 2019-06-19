@@ -3,16 +3,18 @@ import styled from "styled-components";
 const DetalhesRestauranteStyled = styled.div`
 margin-top: 90px;
 display: flex;
-flex-direction: row;
-flex-wrap: wrap;
 justify-content: center;
- 
+
+#detalhes {
+   height: 145px;
+}
+
 img {
-   width: 100px;
-   height: 100px;
+   margin-top: 20px;
+   width: 120px;
+   height: 120px;
    float: left;
-   margin-right: 21px;
-   margin-top: 25px;
+   margin-left: 45px;
 }
 
 h1 {
@@ -33,6 +35,12 @@ p {
 span {
    flex-direction: row;
    display: flex;
+   font-size: 12px;
+}
+
+#hours {
+   font-weight: bold;
+   margin-left: 5px;
 }
 `;
 
