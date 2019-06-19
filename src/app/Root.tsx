@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { HomeContainer } from './containers/home-container';
-import { CardapioContainer } from './containers/cardapio-container';
+import { MenuContainer } from './containers/menu-container';
 
 const Root = () => {
    return (
@@ -12,8 +12,8 @@ const Root = () => {
             exact={true}
          />
          <Route
-            path='/cardapio/:id'
-            component={CardapioContainer}
+            path='/menu/:id'
+            component={MenuContainer}
             exact={true}
          />
       </Switch>

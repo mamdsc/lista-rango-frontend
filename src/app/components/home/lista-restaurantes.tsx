@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Restaurante } from '../../meta-data/interfaces/Restaurante';
 import { ListaRestaurantesStyled } from './lista-restaurantes.styled';
 import { Link } from 'react-router-dom';
+import { Restaurante } from '../../../meta-data/interfaces/Restaurante';
 
 interface IListaRestaurantesProps {
    restaurantes: Restaurante[]
@@ -13,7 +13,7 @@ const ListaRestaurantes: React.FunctionComponent<IListaRestaurantesProps> = prop
          {props.restaurantes.map(restaurante => (
          <ListaRestaurantesStyled key={restaurante.id} abertoAgora={restaurante.abertoAgora}>
             <ul>
-               <Link id='link' to={`/cardapio/${restaurante.id}`}>
+               <Link id='link' to={`/menu/${restaurante.id}`}>
                   <li key={restaurante.id}>
                      <div id='hours'>
                         {restaurante.abertoAgora ? 'Aberto agora' : 'Fechado'}

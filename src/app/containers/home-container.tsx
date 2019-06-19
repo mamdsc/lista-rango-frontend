@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { ApiRestaurantes } from '../../services/api-restaurantes';
-import { HomeContainerStyled } from './home-container.styled';
 import { Restaurante } from '../../meta-data/interfaces/Restaurante';
-import { BuscaRestaurantes } from '../components/busca-restaurantes';
+import { BuscaRestaurantes } from '../components/home/busca-restaurantes';
 import { Hours } from '../../meta-data/interfaces/Hours';
-import { ListaRestaurantes } from '../components/lista-restaurantes';
+import styled from 'styled-components';
+import { LayoutStyled } from '../components/layout.styled';
+import { ListaRestaurantes } from '../components/home/lista-restaurantes';
 
 interface IHomeContainerState {
    restaurantes: Restaurante[],
@@ -106,17 +107,27 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       const { restaurantes } = this.state;
 
       return (
-         <HomeContainerStyled>
-            <header/>
-            <div>
+         <LayoutStyled>
+            <HomeContainerStyled>
+               <header/>
                <h1>Bem-vindo ao Lista Rango</h1>
                <BuscaRestaurantes aplicarFiltro={this.aplicarFiltro}/>
                <ListaRestaurantes restaurantes={restaurantes}/>
-            </div>
-         </HomeContainerStyled>
+            </HomeContainerStyled>
+         </LayoutStyled>
       );
    }
 }
+
+const HomeContainerStyled = styled.div`
+h1 {
+  margin-top: 90px;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  color: #404040;
+  font-size: 24px;
+  font-weight: normal;
+}`;
 
 export { HomeContainer };
 

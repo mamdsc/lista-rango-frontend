@@ -6,9 +6,6 @@ interface IListaRestaurantesStyledProps {
 
 const ListaRestaurantesStyled = styled.span<IListaRestaurantesStyledProps>`
 
-font-family: Montserrat, sans-serif;
-color: #404040;
-
 img {
    width: 100px;
    height: 100px;

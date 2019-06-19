@@ -11,9 +11,7 @@ input {
    box-shadow: 5px 5px 5px #aaaaaa;
    text-indent: 30px;
    outline-style: none;
-   color: #404040;
    font-size: 15px;
-   font-family: Montserrat, sans-serif;
    margin-bottom: 50px;
 }
 `;
