@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { IRestaurante } from '../../meta-data/interfaces/IRestaurante';
-import { IHours } from '../../meta-data/interfaces/IHours';
-import styled from 'styled-components';
+import { IRestaurante, IHours } from '../../meta-data/interfaces';
 import { LayoutStyled } from '../components/layout.styled';
 import { ListaRestaurantes } from '../components/home/lista-restaurantes';
 import { RestauranteService } from '../../services/restaurante-service';
 import { Input } from '../components/common/input';
 import { Loading } from '../components/common/loading';
+import { HomeContainerStyled } from './home-container.styled';
 
 interface IHomeContainerState {
    restaurantes: IRestaurante[],
@@ -139,7 +138,12 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
                <HomeContainerStyled>
                   <header/>
                   <h1>Bem-vindo ao Lista Rango</h1>
-                  <Input aplicarFiltro={this.aplicarFiltro} placeholder={'Buscar estabelecimento'}/>
+                  <Input
+                     aplicarFiltro={this.aplicarFiltro}
+                     placeholder={'Buscar estabelecimento'}
+                     marginTop={'30px'}
+                     marginBottom={'40px'}
+                  />
                   <ListaRestaurantes restaurantes={restaurantes}/>
                </HomeContainerStyled>
             }
@@ -147,16 +151,6 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       );
    }
 }
-
-const HomeContainerStyled = styled.div`
-h1 {
-  margin-top: 90px;
-  text-align: center;
-  font-family: Montserrat, sans-serif;
-  color: #404040;
-  font-size: 24px;
-  font-weight: normal;
-}`;
 
 export { HomeContainer };
 

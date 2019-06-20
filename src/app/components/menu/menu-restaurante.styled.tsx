@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const MenuRestauranteStyled = styled.span`
+
 img {
    width: 115px;
    height: 115px;
@@ -11,8 +12,8 @@ img {
    box-shadow: 0px 2px 4px #000000;
    border-radius: 4px;
    height: 115px;
-   width: 386px;
-   margin: 10px;
+   width: 366px;
+   margin: 5px;
 }
 
 #infos {
@@ -49,7 +50,6 @@ img {
  .row-wrap {
 	flex-flow: row wrap;
 }
-
 
 .container {
 	max-width: 900px;

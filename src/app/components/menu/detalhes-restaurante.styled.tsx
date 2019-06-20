@@ -3,7 +3,7 @@ import styled from "styled-components";
 const DetalhesRestauranteStyled = styled.div`
 margin-top: 90px;
 display: flex;
-justify-content: center;
+text-align: left;
 
 #detalhes {
    height: 145px;
@@ -14,7 +14,7 @@ img {
    width: 120px;
    height: 120px;
    float: left;
-   margin-left: 45px;
+   margin-left: 10px;
 }
 
 h1 {

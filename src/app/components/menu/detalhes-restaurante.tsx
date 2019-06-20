@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRestaurante } from '../../../meta-data/interfaces/IRestaurante';
+import { IRestaurante } from '../../../meta-data/interfaces';
 import { DetalhesRestauranteStyled } from './detalhes-restaurante.styled';
 
 interface IDetalhesRestauranteProps {

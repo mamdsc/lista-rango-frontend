@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ListaRestaurantesStyled } from './lista-restaurantes.styled';
 import { Link } from 'react-router-dom';
-import { IRestaurante } from '../../../meta-data/interfaces/IRestaurante';
+import { IRestaurante } from '../../../meta-data/interfaces';
 
 interface IListaRestaurantesProps {
    restaurantes: IRestaurante[]

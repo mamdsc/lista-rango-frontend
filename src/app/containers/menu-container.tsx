@@ -3,13 +3,13 @@ import { RestauranteService } from '../../services/restaurante-service';
 import { RouteComponentProps } from 'react-router';
 import { MenuRestaurante } from '../components/menu/menu-restaurante';
 import { DetalhesRestaurante } from '../components/menu/detalhes-restaurante';
-import { IRestaurante } from '../../meta-data/interfaces/IRestaurante';
-import { IMenu } from '../../meta-data/interfaces/IMenu';
+import { IMenu, IRestaurante, IGrupo } from '../../meta-data/interfaces';
 import { LayoutStyled } from '../components/layout.styled';
 import { MenuService } from '../../services/menu-service';
 import { Input } from '../components/common/input';
 import { Link } from 'react-router-dom';
 import { Loading } from '../components/common/loading';
+import { MenuContainerStyled } from './menu-container.styled';
 
 interface IProps extends RouteComponentProps<{ id: string }> {
 }
@@ -23,6 +23,7 @@ interface IMenuContainerState {
 class MenuContainer extends React.Component<IProps, IMenuContainerState> {
 
    public listaItensMenu: IMenu[] = [];
+   public grupos: string[] = [];
 
    public constructor (props: IProps) {
       super(props);
@@ -103,46 +104,74 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
    }
 
    public diasDaSemana = (days: number): string => {
-   switch (days)
-   {
-      case 1:
-         return 'Domingo';
-      case 2:
-         return 'Segunda';
-      case 3:
-         return 'Terça';
-      case 4:
-         return 'Quarta';
-      case 5:
-         return 'Quinta';
-      case 6:
-         return 'Sexta'
-      case 7:
-         return 'Sábado'
-      default:
-         return ''
+      switch (days)
+      {
+         case 1:
+            return 'Domingo';
+         case 2:
+            return 'Segunda';
+         case 3:
+            return 'Terça';
+         case 4:
+            return 'Quarta';
+         case 5:
+            return 'Quinta';
+         case 6:
+            return 'Sexta'
+         case 7:
+            return 'Sábado'
+         default:
+            return ''
+      }
    }
-}
 
-public primeiro = (days: number[]): string => {
-   const primeiro = this.diasDaSemana(days[ 0 ]);
-   return primeiro;
-}
+   public primeiro = (days: number[]): string => {
+      const primeiro = this.diasDaSemana(days[ 0 ]);
+      return primeiro;
+   }
 
-public ultimo = (days: number[]): string => {
-   const ultimo = this.diasDaSemana(days[days.length - 1]);
-   return ultimo;
-}
+   public ultimo = (days: number[]): string => {
+      const ultimo = this.diasDaSemana(days[days.length - 1]);
+      return ultimo;
+   }
+   
+   public separarGrupos = (): IGrupo[] => {
+      const { menu } = this.state;
+      let grupo: IGrupo = {nome: '', itens: []};
+      let grupos: IGrupo[] = [];
+
+      const x: string[] = [];
+      menu.map(item => {
+         if (x.includes(item.group.toLowerCase()) === false) {
+            x.push(item.group.toLowerCase())
+         }
+         
+      })
+      
+      x.map(i => {
+         grupo = {
+            nome: i,
+            itens: []
+         }
+         menu.map(i => {
+            if (i.group.toLowerCase() === grupo.nome.toLowerCase()) {
+               grupo.itens.push(i)
+            }
+         })
+         grupos.push(grupo);
+      })
+      return grupos;
+   }
 
    public render(): JSX.Element {
 
-      const { restaurante, menu, isLoading } = this.state;
+      const { restaurante, isLoading } = this.state;
 
       return (
          <LayoutStyled>
             {isLoading ?
             <Loading/> :
-               <div>
+               <MenuContainerStyled>
                   <header>
                      <Link to={'/'}>
                         <button className='btnVoltar'>Voltar</button>
@@ -153,13 +182,18 @@ public ultimo = (days: number[]): string => {
                      primeiroDiaDaSemana={this.primeiro}
                      ultimoDiaDaSemana={this.ultimo}
                   />
-                  <Input
-                     aplicarFiltro={this.aplicarFiltro}
-                     margin={'16px'}
-                     placeholder={'Buscar no cardápio'}
-                  />
-                  <MenuRestaurante menu={menu}/>
-               </div>
+                  <div id='menu'>
+                     <Input
+                        aplicarFiltro={this.aplicarFiltro}
+                        marginTop={'16px'}
+                        marginBottom={'24px'}
+                        placeholder={'Buscar no cardápio'}
+                        width={'791px'}
+                     />
+                     <MenuRestaurante grupos={this.separarGrupos()}/>
+                  </div>
+                  <div id='retangulo'/>
+               </MenuContainerStyled>
             }
          </LayoutStyled>
       );

@@ -4,7 +4,8 @@ import { InputStyled } from './input.styled';
 interface IInputProps {
    aplicarFiltro(nomeFiltro: string): void;
    width?: string;
-   margin?: string;
+   marginTop?: string;
+   marginBottom?: string;
    placeholder?: string;
 }
 
@@ -16,7 +17,8 @@ class Input extends React.Component<IInputProps, IInputState> {
    
    public static defaultProps = {
       width: '700px',
-      margin: '50px',
+      marginBottom: '00px',
+      marginTop: '0px',
       placeholder: 'Buscar'
    }
 
@@ -44,10 +46,10 @@ class Input extends React.Component<IInputProps, IInputState> {
    public render(): JSX.Element {
 
       const { nomeFiltro } = this.state;
-      const { margin, width, placeholder } = this.props;
+      const { marginBottom, marginTop, width, placeholder } = this.props;
 
       return (
-         <InputStyled width={width} margin={margin}>
+         <InputStyled width={width} marginBottom={marginBottom} marginTop={marginTop}>
             <input
                type='text'
                placeholder={placeholder}

@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 interface IInputStyledProps {
    width?: string;
-   margin?: string;
+   marginTop?: string;
+   marginBottom?: string;
 }
 
-const InputStyled = styled.div <IInputStyledProps>`
+const InputStyled = styled.div<IInputStyledProps>`
 text-align: center;
 
 input {
@@ -17,7 +18,8 @@ input {
    text-indent: 30px;
    outline-style: none;
    font-size: 15px;
-   margin: ${props => props.margin};
+   margin-top: ${props => props.marginTop};
+   margin-bottom: ${props => props.marginBottom};
 }
 `;
 
