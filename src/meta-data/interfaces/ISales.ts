@@ -1,4 +1,4 @@
-import { IHours } from "./Hours";
+import { IHours } from "./IHours";
 
 export interface ISales {
    description: string;

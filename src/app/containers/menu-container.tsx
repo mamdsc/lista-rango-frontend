@@ -3,8 +3,8 @@ import { RestauranteService } from '../../services/restaurante-service';
 import { RouteComponentProps } from 'react-router';
 import { MenuRestaurante } from '../components/menu/menu-restaurante';
 import { DetalhesRestaurante } from '../components/menu/detalhes-restaurante';
-import { IRestaurante } from '../../meta-data/interfaces/Restaurante';
-import { IMenu } from '../../meta-data/interfaces/Menu';
+import { IRestaurante } from '../../meta-data/interfaces/IRestaurante';
+import { IMenu } from '../../meta-data/interfaces/IMenu';
 import { LayoutStyled } from '../components/layout.styled';
 import { MenuService } from '../../services/menu-service';
 import { Input } from '../components/common/input';
@@ -102,6 +102,38 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
       })
    }
 
+   public diasDaSemana = (days: number): string => {
+   switch (days)
+   {
+      case 1:
+         return 'Domingo';
+      case 2:
+         return 'Segunda';
+      case 3:
+         return 'Terça';
+      case 4:
+         return 'Quarta';
+      case 5:
+         return 'Quinta';
+      case 6:
+         return 'Sexta'
+      case 7:
+         return 'Sábado'
+      default:
+         return ''
+   }
+}
+
+public primeiro = (days: number[]): string => {
+   const primeiro = this.diasDaSemana(days[ 0 ]);
+   return primeiro;
+}
+
+public ultimo = (days: number[]): string => {
+   const ultimo = this.diasDaSemana(days[days.length - 1]);
+   return ultimo;
+}
+
    public render(): JSX.Element {
 
       const { restaurante, menu, isLoading } = this.state;
@@ -116,8 +148,16 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
                         <button className='btnVoltar'>Voltar</button>
                      </Link>
                   </header>
-                  <DetalhesRestaurante restaurante={restaurante}/>
-                  <Input aplicarFiltro={this.aplicarFiltro} margin={'16px'} placeholder={'Buscar no cardápio'}/>
+                  <DetalhesRestaurante
+                     restaurante={restaurante}
+                     primeiroDiaDaSemana={this.primeiro}
+                     ultimoDiaDaSemana={this.ultimo}
+                  />
+                  <Input
+                     aplicarFiltro={this.aplicarFiltro}
+                     margin={'16px'}
+                     placeholder={'Buscar no cardápio'}
+                  />
                   <MenuRestaurante menu={menu}/>
                </div>
             }

@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { IRestaurante } from '../meta-data/interfaces/Restaurante';
+import { IRestaurante } from '../meta-data/interfaces/IRestaurante';
 import { http } from './http';
 
 const RestauranteService = {

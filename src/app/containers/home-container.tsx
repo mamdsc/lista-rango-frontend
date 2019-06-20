@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IRestaurante } from '../../meta-data/interfaces/Restaurante';
-import { IHours } from '../../meta-data/interfaces/Hours';
+import { IRestaurante } from '../../meta-data/interfaces/IRestaurante';
+import { IHours } from '../../meta-data/interfaces/IHours';
 import styled from 'styled-components';
 import { LayoutStyled } from '../components/layout.styled';
 import { ListaRestaurantes } from '../components/home/lista-restaurantes';

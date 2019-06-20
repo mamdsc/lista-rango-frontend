@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IMenu } from '../../../meta-data/interfaces/Menu';
+import { IMenu } from '../../../meta-data/interfaces/IMenu';
 import { MenuRestauranteStyled } from './menu-restaurante.styled';
 
 interface IMenuRestauranteProps {

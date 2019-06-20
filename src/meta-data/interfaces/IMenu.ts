@@ -1,4 +1,4 @@
-import { ISales } from "./Sales";
+import { ISales } from "./ISales";
 
 export interface IMenu {
    restaurantId: number;
