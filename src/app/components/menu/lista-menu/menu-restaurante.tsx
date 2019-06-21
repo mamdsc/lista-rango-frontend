@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { MenuRestauranteStyled } from './menu-restaurante.styled';
-import { Collapse } from '../common/collapse';
-import { IGrupo } from '../../../meta-data/interfaces';
+import { Collapse } from '../../common/collapse/collapse';
+import { IGrupo } from '../../../../meta-data/interfaces';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../../theme/default';
+import { theme } from '../../../../theme/default';
 
 interface IMenuRestauranteProps {
    grupos: IGrupo[];

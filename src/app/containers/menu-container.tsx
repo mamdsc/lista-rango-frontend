@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { RestauranteService } from '../../services/restaurante-service';
 import { RouteComponentProps } from 'react-router';
-import { MenuRestaurante } from '../components/menu/menu-restaurante';
-import { DetalhesRestaurante } from '../components/menu/detalhes-restaurante';
+import { MenuRestaurante } from '../components/menu/lista-menu/menu-restaurante';
+import { DetalhesRestaurante } from '../components/menu/detalhes/detalhes-restaurante';
 import { IMenu, IRestaurante, IGrupo } from '../../meta-data/interfaces';
 import { LayoutStyled } from '../components/layout.styled';
 import { MenuService } from '../../services/menu-service';
-import { Input } from '../components/common/input';
+import { Input } from '../components/common/input/input';
 import { Link } from 'react-router-dom';
-import { Loading } from '../components/common/loading';
+import { Loading } from '../components/common/loading/loading';
 import { MenuContainerStyled } from './menu-container.styled';
-import { ItemMenu } from '../components/menu/item-menu';
+import { ItemMenu } from '../components/menu/item/item-menu';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../theme/default';
-import { Error } from '../components/common/error';
+import { Error } from '../components/common/error/error';
 
 interface IProps extends RouteComponentProps<{ id: string }> {
 }
@@ -227,7 +227,7 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
                         aplicarFiltro={this.aplicarFiltro}
                         marginTop={'16px'}
                         marginBottom={'24px'}
-                        placeholder={'Buscar no cardápio'}
+                        placeHolder={'Buscar no cardápio'}
                         width={'791px'}
                      />
                      <MenuRestaurante

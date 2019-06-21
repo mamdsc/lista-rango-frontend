@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { InputStyled } from './input.styled';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../../theme/default';
+import { theme } from '../../../../theme/default';
 
 interface IInputProps {
    aplicarFiltro(nomeFiltro: string): void;
    width?: string;
    marginTop?: string;
    marginBottom?: string;
-   placeholder?: string;
+   placeHolder?: string;
 }
 
 interface IInputState {
@@ -21,7 +21,7 @@ class Input extends React.Component<IInputProps, IInputState> {
       width: '700px',
       marginBottom: '00px',
       marginTop: '0px',
-      placeholder: 'Buscar'
+      placeHolder: 'Buscar'
    }
 
    public constructor(props: IInputProps) {
@@ -48,7 +48,7 @@ class Input extends React.Component<IInputProps, IInputState> {
    public render(): JSX.Element {
 
       const { nomeFiltro } = this.state;
-      const { marginBottom, marginTop, width, placeholder } = this.props;
+      const { marginBottom, marginTop, width, placeHolder } = this.props;
 
       return (
          <ThemeProvider theme={theme}>
@@ -56,7 +56,7 @@ class Input extends React.Component<IInputProps, IInputState> {
                <input
                   title={'Digite e pressione a tecla enter'}
                   type='text'
-                  placeholder={placeholder}
+                  placeholder={placeHolder}
                   value={nomeFiltro ? nomeFiltro : ''}
                   onChange={this.onChangeInputBusca}
                   onKeyDown={this.onKeyDownInput}

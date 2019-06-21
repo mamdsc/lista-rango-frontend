@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CollapseStyled } from './collapse.styled';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../../theme/default';
+import { theme } from '../../../../theme/default';
 
 interface ICollapseProps {
    label: string
@@ -38,7 +38,7 @@ class Collapse extends React.Component<ICollapseProps, ICollapseState> {
                      <i id="right"></i>
                      {label}
                   </button>
-                  {open ? <div>{children}</div> : <div/>}
+                  {open ? <div id='conteudo'>{children}</div> : <div/>}
             </CollapseStyled>
          </ThemeProvider>
       );

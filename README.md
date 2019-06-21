@@ -46,4 +46,15 @@ Para subir localmente dentro da pasta execute o comando:
 $ npm start
 ```
 
+#### Testes
+
+- Jest
+- Enzyme
+
+Para rodar acesse a pasta raiz e execute o comando:
+
+```bash
+$ npm run test
+```
+
 Porta: [http://localhost:3000](http://localhost:3000).

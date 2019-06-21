@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ItemMenuStyled } from './item-menu.styled';
-import { IMenu } from '../../../meta-data/interfaces';
+import { IMenu } from '../../../../meta-data/interfaces';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../../theme/default';
+import { theme } from '../../../../theme/default';
 
 interface IItemMenuProps {
    item: IMenu;

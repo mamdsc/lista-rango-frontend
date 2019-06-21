@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IRestaurante } from '../../../meta-data/interfaces';
+import { IRestaurante } from '../../../../meta-data/interfaces';
 import { DetalhesRestauranteStyled } from './detalhes-restaurante.styled';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../../theme/default';
+import { theme } from '../../../../theme/default';
 
 interface IDetalhesRestauranteProps {
    restaurante: IRestaurante;

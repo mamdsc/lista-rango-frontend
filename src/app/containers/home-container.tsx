@@ -3,12 +3,12 @@ import { IRestaurante, IHours } from '../../meta-data/interfaces';
 import { LayoutStyled } from '../components/layout.styled';
 import { ListaRestaurantes } from '../components/home/lista-restaurantes';
 import { RestauranteService } from '../../services/restaurante-service';
-import { Input } from '../components/common/input';
-import { Loading } from '../components/common/loading';
+import { Input } from '../components/common/input/input';
+import { Loading } from '../components/common/loading/loading';
 import { HomeContainerStyled } from './home-container.styled';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../theme/default';
-import { Error } from '../components/common/error';
+import { Error } from '../components/common/error/error';
 
 interface IHomeContainerState {
    restaurantes: IRestaurante[],
@@ -177,7 +177,7 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
                   <h1>Bem-vindo ao Lista Rango</h1>
                   <Input
                      aplicarFiltro={this.aplicarFiltro}
-                     placeholder={'Buscar estabelecimento'}
+                     placeHolder={'Buscar estabelecimento'}
                      marginTop={'30px'}
                      marginBottom={'40px'}
                   />

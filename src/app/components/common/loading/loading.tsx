@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { LoadingStyled } from './loading.styled';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../../theme/default';
+import { theme } from '../../../../theme/default';
 
-const Loading: React.StatelessComponent = props => {
+const Loading: React.StatelessComponent = () => {
     return (
         <ThemeProvider theme={theme}>
             <LoadingStyled>
