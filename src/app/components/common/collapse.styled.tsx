@@ -15,23 +15,17 @@ button {
   padding: 23px;
   font-weight: bold;
   font-size: 16px;
-  color: #404040;
 }
 
-.collapsible {
+#collapsible {
   cursor: pointer;
   padding: 18px;
   width: 100%;
   border-bottom: 2px solid;
+  border-color: #404040;
   margin-bottom: 5px;
   text-align: left;
   outline: none;
-}
- 
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
 }
 
 i {
@@ -43,11 +37,11 @@ i {
 }
 
 ${props => props.open ? `
-.down {
+#right {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }` : `
-.right {
+#right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }`

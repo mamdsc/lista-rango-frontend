@@ -18,7 +18,7 @@ img {
 }
 
 #itens {
-   box-shadow: 0px 2px 4px #000000;
+   box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
    border-radius: 4px;
    height: 100px;
    width: 367px;
@@ -54,14 +54,14 @@ img {
    margin: 10px;
 }
 
-.flex-container {
+#flex-container {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
 }
  
-.flex-container > div {
+#flex-container > div {
    margin: 10px;
 }
 `; 

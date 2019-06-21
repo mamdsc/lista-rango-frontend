@@ -9,7 +9,7 @@ img {
 }
 
 #itens {
-   box-shadow: 0px 2px 4px #000000;
+   box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
    border-radius: 4px;
    height: 115px;
    width: 366px;
@@ -41,13 +41,13 @@ img {
    flex-direction: row;
    flex-flow: row wrap;
    justify-content: center;
- }
+}
  
- .flex-container > div {
+.flex-container > div {
    margin: 10px;
- }
+}
 
- .row-wrap {
+.row-wrap {
 	flex-flow: row wrap;
 }
 

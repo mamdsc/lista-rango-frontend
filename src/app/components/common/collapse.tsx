@@ -2,8 +2,7 @@ import * as React from 'react';
 import { CollapseStyled } from './collapse.styled';
 
 interface ICollapseProps {
-   label: string,
-   // children: React.ReactNode
+   label: string
 }
 
 interface ICollapseState {
@@ -32,8 +31,8 @@ class Collapse extends React.Component<ICollapseProps, ICollapseState> {
 
       return (
          <CollapseStyled open={open}>
-               <button onClick={this.toggleCollapise} className="collapsible">
-                  <i className="right"></i>
+               <button onClick={this.toggleCollapise} id="collapsible">
+                  <i id="right"></i>
                   {label}
                </button>
                {open ? <div>{children}</div> : <div/>}

@@ -14,7 +14,7 @@ input {
    height: 40px;
    border-radius: 20px;
    border: 1px solid #FFF;
-   box-shadow: 5px 5px 5px #aaaaaa;
+   box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
    text-indent: 30px;
    outline-style: none;
    font-size: 15px;

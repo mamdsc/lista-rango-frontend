@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const LoadingStyled = styled.div`
 text-align: center;
 
-.loader {
+#loader {
   position: absolute;
   left: 50%;
   top: 50%;

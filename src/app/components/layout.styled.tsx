@@ -14,7 +14,7 @@ header {
   position: absolute;
 }
 
-.btnVoltar {
+#btnVoltar {
   text-decoration: none;
   background-color: transparent;
   cursor: pointer;

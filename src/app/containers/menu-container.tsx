@@ -10,6 +10,7 @@ import { Input } from '../components/common/input';
 import { Link } from 'react-router-dom';
 import { Loading } from '../components/common/loading';
 import { MenuContainerStyled } from './menu-container.styled';
+import { ItemMenu } from '../components/menu/item-menu';
 
 interface IProps extends RouteComponentProps<{ id: string }> {
 }
@@ -18,19 +19,28 @@ interface IMenuContainerState {
    menu: IMenu[];
    restaurante: IRestaurante;
    isLoading: boolean;
+   showModal: boolean;
 }
 
 class MenuContainer extends React.Component<IProps, IMenuContainerState> {
 
    public listaItensMenu: IMenu[] = [];
-   public grupos: string[] = [];
+   public itemSelecionado: IMenu = {
+      restaurantId: 0,
+      group: '',
+      image: '',
+      name: '',
+      price: 0,
+      sales: []
+   }
 
    public constructor (props: IProps) {
       super(props);
       this.state = {
          menu: [],
          restaurante: {id: 0, name: '', address: '', image: '', hours: [], abertoAgora: false},
-         isLoading: false
+         isLoading: false,
+         showModal: false
       }
    }
 
@@ -145,7 +155,6 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
          if (x.includes(item.group.toLowerCase()) === false) {
             x.push(item.group.toLowerCase())
          }
-         
       })
       
       x.map(i => {
@@ -163,9 +172,25 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
       return grupos;
    }
 
+   public toggleModal = (nome: string) => {
+      this.state.menu.filter(item => {
+         if (item.name === nome)
+            this.itemSelecionado = item;
+      })
+      this.setState({
+         showModal: true
+      })
+   }
+
+   public closeModal = () => {
+      this.setState({
+         showModal: false
+      })
+   }
+
    public render(): JSX.Element {
 
-      const { restaurante, isLoading } = this.state;
+      const { restaurante, isLoading, showModal } = this.state;
 
       return (
          <LayoutStyled>
@@ -174,7 +199,7 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
                <MenuContainerStyled>
                   <header>
                      <Link to={'/'}>
-                        <button className='btnVoltar'>Voltar</button>
+                        <button id='btnVoltar'>Voltar</button>
                      </Link>
                   </header>
                   <DetalhesRestaurante
@@ -190,7 +215,11 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
                         placeholder={'Buscar no cardápio'}
                         width={'791px'}
                      />
-                     <MenuRestaurante grupos={this.separarGrupos()}/>
+                     <MenuRestaurante
+                        grupos={this.separarGrupos()}
+                        toggleModal={this.toggleModal}
+                     />
+                  {showModal && <ItemMenu item={this.itemSelecionado} closeModal={this.closeModal}/>}
                   </div>
                   <div id='retangulo'/>
                </MenuContainerStyled>

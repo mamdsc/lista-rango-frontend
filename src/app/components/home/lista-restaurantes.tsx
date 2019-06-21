@@ -12,7 +12,7 @@ const ListaRestaurantes: React.FunctionComponent<IListaRestaurantesProps> = prop
       <div style={{display: 'flex', justifyContent: 'center'}}>
          {props.restaurantes.map(restaurante => (
          <ListaRestaurantesStyled key={restaurante.id} abertoAgora={restaurante.abertoAgora}>
-            <div className="flex-container">
+            <div id="flex-container">
                <Link id='link' to={`/menu/${restaurante.id}`}>
                   <div id='itens' key={restaurante.id}>
                      <div id='hours'>

@@ -5,16 +5,21 @@ import { IGrupo } from '../../../meta-data/interfaces';
 
 interface IMenuRestauranteProps {
    grupos: IGrupo[];
+   toggleModal(nome: string): void;
 }
 
 const MenuRestaurante: React.StatelessComponent<IMenuRestauranteProps> = props => {
       return (
             <MenuRestauranteStyled>
-                     {props.grupos.map(grupo =>
-                        <Collapse label={grupo.nome}>
+                     {props.grupos.map((grupo, index) =>
+                        <Collapse label={grupo.nome} key={index}>
                         <div className="container row-wrap">
                            {grupo.itens.map((item, index) => (
-                              <div id='itens' key={index}>
+                              <span
+                                 id='itens'
+                                 key={index}
+                                 onClick={() => props.toggleModal(item.name)}
+                              >
                                  <img src={item.image} alt={item.name}/>
                                  <div id='infos'>
                                     <span id='name'>
@@ -28,7 +33,7 @@ const MenuRestaurante: React.StatelessComponent<IMenuRestauranteProps> = props =
                                        {style: 'currency', currency: 'BRL'})}
                                     </span>
                                  </div>
-                              </div>
+                              </span>
                            ))}
                   </div>
                   </Collapse>

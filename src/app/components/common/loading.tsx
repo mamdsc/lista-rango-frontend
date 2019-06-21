@@ -4,7 +4,7 @@ import { LoadingStyled } from './loading.styled';
 const Loading: React.StatelessComponent = props => {
     return (
         <LoadingStyled>
-            <div className="loader"/>
+            <div id="loader"/>
         </LoadingStyled>
     );
 }
