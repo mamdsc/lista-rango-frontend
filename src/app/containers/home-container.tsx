@@ -95,7 +95,9 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
 
    public aplicarFiltro = (nomeRestaurante: string) => {   
       if (!nomeRestaurante) {
-         this.obtemRestaurantes();
+         this.setState({
+            restaurantes: this.listaDeRestaurantes
+         })
       }
       
       const filtrados = this.filtrarItens(nomeRestaurante);

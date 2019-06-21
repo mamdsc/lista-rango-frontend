@@ -95,7 +95,9 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
 
    public aplicarFiltro = (nomeFiltro: string) => {
       if (!nomeFiltro) {
-         this.obtemMenu();
+         this.setState({
+            menu: this.listaItensMenu
+         })
       }
       
       const filtrados = this.filtrarItens(nomeFiltro);
