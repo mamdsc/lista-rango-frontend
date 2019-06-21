@@ -10,11 +10,11 @@
 
 Seguindo o padrão de organização proposto pelo Dan Abramov, com mais controle do state no container e evitando duplicação.
 
-- Components: Dumb components usados para construção da tela, organizados por feature do projeto e 'common' sendo componentes reutilizáveis ;
+- Components: Dumb components usados para construção da tela, organizados por feature do projeto e 'common' sendo componentes reutilizáveis;
 - Containers: Smart components, componentes principais que executam a lógica;
 - Service: Fornece serviços necessários para aplicação;
 - Meta-data: Estrutura de dados da aplicação como interfaces, models, etc;
-- Theme: Tema da aplicação, responsável por estilizar globalmente, por exemplo cores e fontes padrões.
+- Theme: Tema da aplicação, responsável por estilizar globalmente, por exemplo cores e fontes padrão.
 
 #### Objetivos
 

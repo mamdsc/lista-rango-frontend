@@ -64,7 +64,7 @@ p {
 
 #info {
   flex-direction: row;
-   display: flex;
+  display: flex;
 }
 `;
 

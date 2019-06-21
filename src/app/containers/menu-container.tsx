@@ -13,6 +13,7 @@ import { MenuContainerStyled } from './menu-container.styled';
 import { ItemMenu } from '../components/menu/item-menu';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../theme/default';
+import { Error } from '../components/common/error';
 
 interface IProps extends RouteComponentProps<{ id: string }> {
 }
@@ -22,6 +23,7 @@ interface IMenuContainerState {
    restaurante: IRestaurante;
    isLoading: boolean;
    showModal: boolean;
+   error: boolean;
 }
 
 class MenuContainer extends React.Component<IProps, IMenuContainerState> {
@@ -42,7 +44,8 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
          menu: [],
          restaurante: {id: 0, name: '', address: '', image: '', hours: [], abertoAgora: false},
          isLoading: false,
-         showModal: false
+         showModal: false,
+         error: false
       }
    }
 
@@ -62,7 +65,10 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
          this.setLoading(false);
       } catch (err) {
          this.setLoading(false);
-         throw Error(`Request error. ->> ${err}`);
+         this.setState({
+            error: true
+         })
+         console.error(err);
       }
    }
 
@@ -76,7 +82,10 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
          this.setLoading(false);
       } catch (err) {
          this.setLoading(false);
-         throw Error(`Request error. ->> ${err}`);
+         this.setState({
+            error: true
+         })
+         console.error(err);
       }
    }
 
@@ -194,11 +203,12 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
 
    public render(): JSX.Element {
 
-      const { restaurante, isLoading, showModal } = this.state;
+      const { restaurante, isLoading, showModal, error } = this.state;
 
       return (
          <ThemeProvider theme={theme}>
          <LayoutStyled>
+            {error && <Error/>}
             {isLoading ?
             <Loading/> :
                <MenuContainerStyled>

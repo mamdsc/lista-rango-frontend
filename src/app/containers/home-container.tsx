@@ -8,11 +8,13 @@ import { Loading } from '../components/common/loading';
 import { HomeContainerStyled } from './home-container.styled';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../theme/default';
+import { Error } from '../components/common/error';
 
 interface IHomeContainerState {
    restaurantes: IRestaurante[],
    abertoAgora: boolean;
    isLoading: boolean;
+   error: boolean;
 }
 
 class HomeContainer extends React.Component<{}, IHomeContainerState> {
@@ -24,7 +26,8 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       this.state = {
          restaurantes: [],
          abertoAgora: false,
-         isLoading: false
+         isLoading: false,
+         error: false
       };
    }
 
@@ -59,7 +62,10 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
          this.setLoading(false);
       } catch (err) {
          this.setLoading(false);
-         throw Error(`Request error. ->> ${err}`);
+         this.setState({
+            error: true
+         })
+         console.error(err);
       }
    }
 
@@ -158,11 +164,12 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
 
    public render(): JSX.Element {
 
-      const { restaurantes, isLoading } = this.state;
+      const { restaurantes, isLoading, error } = this.state;
 
       return (
          <ThemeProvider theme={theme}>
          <LayoutStyled>
+            {error && <Error/>}
             {isLoading ?
                <Loading/> :
                <HomeContainerStyled>
