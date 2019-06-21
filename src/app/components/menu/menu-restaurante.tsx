@@ -2,6 +2,8 @@ import * as React from 'react';
 import { MenuRestauranteStyled } from './menu-restaurante.styled';
 import { Collapse } from '../common/collapse';
 import { IGrupo } from '../../../meta-data/interfaces';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../../theme/default';
 
 interface IMenuRestauranteProps {
    grupos: IGrupo[];
@@ -10,6 +12,7 @@ interface IMenuRestauranteProps {
 
 const MenuRestaurante: React.StatelessComponent<IMenuRestauranteProps> = props => {
       return (
+         <ThemeProvider theme={theme}>
             <MenuRestauranteStyled>
                      {props.grupos.map((grupo, index) =>
                         <Collapse label={grupo.nome} key={index}>
@@ -39,6 +42,7 @@ const MenuRestaurante: React.StatelessComponent<IMenuRestauranteProps> = props =
                   </Collapse>
                   )}
             </MenuRestauranteStyled>
+         </ThemeProvider>
       );
 };
 

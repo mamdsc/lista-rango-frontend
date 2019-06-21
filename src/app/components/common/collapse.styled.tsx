@@ -8,7 +8,7 @@ const CollapseStyled = styled.div<ICollapseStyledProps>`
 
 button {
   text-decoration: none;
-  background-color: transparent;
+  background-color: ${p => p.theme.colors.transparent};
   cursor: pointer;
   border: 0;
   outline: 0;
@@ -22,21 +22,21 @@ button {
   padding: 18px;
   width: 100%;
   border-bottom: 2px solid;
-  border-color: #404040;
+  border-color: ${p => p.theme.colors.gray};
   margin-bottom: 5px;
   text-align: left;
   outline: none;
 }
 
 i {
-  border: solid black;
+  border: solid ${p => p.theme.colors.black};
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
   float: right;
 }
 
-${props => props.open ? `
+${p => p.open ? `
 #right {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);

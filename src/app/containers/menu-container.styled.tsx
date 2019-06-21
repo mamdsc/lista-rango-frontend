@@ -7,7 +7,7 @@ margin: 74px;
 #retangulo {
   width: 282px;
   height: 765px;
-  background-color: #E6E6E6;
+  background-color: ${p => p.theme.colors.lightGray};
   float: right;
 }
 

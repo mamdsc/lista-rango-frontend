@@ -10,11 +10,11 @@ const ItemMenuStyled = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.20);
+  background-color: ${p => p.theme.colors.lightBlack};
 }
  
 #modal-content {
-  background-color: #FFF;
+  background-color: ${p => p.theme.colors.white};
   margin: auto;
   padding: 20px;
   width: 601px;
@@ -23,14 +23,14 @@ const ItemMenuStyled = styled.div`
 }
  
 #close {
-  color: #000;
+  color: ${p => p.theme.colors.black};
   float: right;
   font-size: 28px;
   font-weight: bold;
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  background: #FFF;
+  background: ${p => p.theme.colors.white};
   margin-top: -40px;
   margin-right: -40px;
   border-color: rgba(0,0,0,0.16);
@@ -50,13 +50,21 @@ h1 {
   height: 39px;
   width: 132px;
   font-size: 32px;
-  color: #009CA3;
+  color: ${p => p.theme.colors.blue};
+  float: right;
+  margin-top: 40px;
+  margin-left: 80px;
 }
 
 p {
   font-size: 16px;
   width: 380px;
   height: 65px;
+}
+
+#info {
+  flex-direction: row;
+   display: flex;
 }
 `;
 

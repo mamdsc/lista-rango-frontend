@@ -6,6 +6,8 @@ import { RestauranteService } from '../../services/restaurante-service';
 import { Input } from '../components/common/input';
 import { Loading } from '../components/common/loading';
 import { HomeContainerStyled } from './home-container.styled';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../theme/default';
 
 interface IHomeContainerState {
    restaurantes: IRestaurante[],
@@ -42,21 +44,46 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
          const response = await RestauranteService.getRestaurantes();
          this.listaDeRestaurantes = response.data;
 
-         let a = response.data;
-         a.map(r => {
+         let restaurantes = response.data;
+         restaurantes.map(r => {
             const statusAgora = this.status(r.hours)
             return r.abertoAgora = statusAgora;
          })
 
-         this.setState({
-            restaurantes: a
-         })
+         let restaurantesOrdenados: IRestaurante[] = [];
+         restaurantesOrdenados = this.ordenar(restaurantes);
 
+         this.setState({
+            restaurantes: restaurantesOrdenados
+         })
          this.setLoading(false);
       } catch (err) {
          this.setLoading(false);
          throw Error(`Request error. ->> ${err}`);
       }
+   }
+
+   public ordenar = (restaurantes: IRestaurante[]): IRestaurante[] => {      
+      
+      restaurantes.sort((a, b) => {
+         if (a.name > b.name){
+            return 1;
+         }
+         if (a.name < b.name) {
+            return -1;
+         }
+         return 0;
+      });
+
+      return restaurantes.sort((a, b) => {
+         if (a.abertoAgora < b.abertoAgora){
+            return 1;
+         }
+         if (a.abertoAgora > b.abertoAgora) {
+            return -1;
+         }
+         return 0;
+      });
    }
 
    public filtrarItens(nomeRestaurante: string) {
@@ -132,6 +159,7 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
       const { restaurantes, isLoading } = this.state;
 
       return (
+         <ThemeProvider theme={theme}>
          <LayoutStyled>
             {isLoading ?
                <Loading/> :
@@ -148,6 +176,7 @@ class HomeContainer extends React.Component<{}, IHomeContainerState> {
                </HomeContainerStyled>
             }
          </LayoutStyled>
+         </ThemeProvider>
       );
    }
 }

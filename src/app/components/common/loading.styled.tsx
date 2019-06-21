@@ -7,9 +7,9 @@ text-align: center;
   position: absolute;
   left: 50%;
   top: 50%;
-  border: 16px solid #f3f3f3;
+  border: 16px solid ${p => p.theme.colors.blue};
   border-radius: 50%;
-  border-top: 16px solid #3498db;
+  border-top: 16px solid ${p => p.theme.colors.white};
   width: 70px;
   height: 70px;
   -webkit-animation: spin 2s linear infinite; /* Safari */

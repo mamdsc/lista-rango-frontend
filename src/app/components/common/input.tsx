@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { InputStyled } from './input.styled';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../../theme/default';
 
 interface IInputProps {
    aplicarFiltro(nomeFiltro: string): void;
@@ -49,15 +51,18 @@ class Input extends React.Component<IInputProps, IInputState> {
       const { marginBottom, marginTop, width, placeholder } = this.props;
 
       return (
-         <InputStyled width={width} marginBottom={marginBottom} marginTop={marginTop}>
-            <input
-               type='text'
-               placeholder={placeholder}
-               value={nomeFiltro ? nomeFiltro : ''}
-               onChange={this.onChangeInputBusca}
-               onKeyDown={this.onKeyDownInput}
-            />
-         </InputStyled>
+         <ThemeProvider theme={theme}>
+            <InputStyled width={width} marginBottom={marginBottom} marginTop={marginTop}>
+               <input
+                  title={'Digite e pressione a tecla enter'}
+                  type='text'
+                  placeholder={placeholder}
+                  value={nomeFiltro ? nomeFiltro : ''}
+                  onChange={this.onChangeInputBusca}
+                  onKeyDown={this.onKeyDownInput}
+               />
+            </InputStyled>
+         </ThemeProvider>
       );
    }
 }

@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 import { Loading } from '../components/common/loading';
 import { MenuContainerStyled } from './menu-container.styled';
 import { ItemMenu } from '../components/menu/item-menu';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../theme/default';
 
 interface IProps extends RouteComponentProps<{ id: string }> {
 }
@@ -193,6 +195,7 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
       const { restaurante, isLoading, showModal } = this.state;
 
       return (
+         <ThemeProvider theme={theme}>
          <LayoutStyled>
             {isLoading ?
             <Loading/> :
@@ -225,6 +228,7 @@ class MenuContainer extends React.Component<IProps, IMenuContainerState> {
                </MenuContainerStyled>
             }
          </LayoutStyled>
+         </ThemeProvider>
       );
    }
 }

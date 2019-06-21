@@ -23,7 +23,7 @@ img {
 
 #price {
    font-size: 16px;
-   color: #009CA3;
+   color: ${p => p.theme.colors.blue};
    line-height: 30px;
 }
 

@@ -30,10 +30,10 @@ img {
    height: 50px;
    line-height: 50px;
    border-radius: 50%;
-   background: ${props => props.abertoAgora ? '#2B0D61' : '#B5ABD4'};
+   background: ${p => p.abertoAgora ? p.theme.colors.darkPurple : p.theme.colors.lightPurple};
    float: right;
    font-size: 10px;
-   color: #fff;
+   color: ${p => p.theme.colors.white};
    text-align: center;
    font-weight: bold;
    align-items: center;
@@ -50,7 +50,7 @@ img {
 
 #link {
    text-decoration: none;
-   color: #404040;
+   color: ${p => p.theme.colors.gray};
    margin: 10px;
 }
 
